@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main %}
+{% for notice in paginator.object_list %}
+<div class="row notice-{{ notice.pk }}">
+  <div class="col s12 m6 offset-m3">
+    {% if notice.picture != None %}
+    <div class="card">
+      <div class="card-image">
+        <img src="{{ notice.picture.shot.url }}" />
+        <span class="card-title">{{ notice.title }}</span>
+      </div>
+      <div class="card-content">
+        <p>{{ notice.body }}</p>
+      </div>
+    </div>
+    {% else %}
+    <div class="card blue-grey darken-1">
+      <div class="card-content white-text">
+        <span class="card-title">{{ notice.title }}</span>
+        <p>{{ notice.body }}</p>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% empty %}
+<div class="row valign center">
+  <div class="col s12 m6 offset-m3">
+    <div class="card blue-grey darken-1">
+      <div class="card-content white-text">
+        <span class="card-title">暂时还没有发布的公告</span>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+<div class="container">
+  <ul class="pagination center">
+    <li class="waves-effect disabled"><a href="/gallery?page={{ paginator.previous_num }}"><i
+          class="material-icons">chevron_left</i></a></li>
+    {% for page_num in paginator.pagerange_disp %}
+    <li class="waves-effect"><a href="/gallery?page={{ page_num }}">{{ page_num }}</a></li>
+    {% endfor %}
+    <li class="waves-effect disabled"><a href="/gallery?page={{ paginator.next_num }}"><i
+          class="material-icons">chevron_right</i></a></li>
+  </ul>
+</div>
+{% endblock main %}
+
+<!-- {% block footer %}
+{% endblock footer %} -->

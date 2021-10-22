@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main %}
+<!-- 头图 & 标题 -->
+<div class="parallax-container valign-wrapper"">
+    <h3 class=" valign center white-text" style="width: 100%;">{{ post.title }}</h5>
+  <div class="parallax">
+    <img src="{{ post.picture.shot.url }}" alt="头图" style="width: auto; max-width: 100%; opacity: 1;" /> 
+  </div>
+</div>
+<div class="container">
+  <article class="post post-{{ post.pk }}">
+    <header class="section">
+      <h3 class="entry-title">{{ post.title }}</h3>
+      <div class="divider"></div>
+      <div class="entry-meta">
+        <span class="post-date grey-text lighten-1">{{ post.created_time }}</span>
+        <span class="post-author"><a href="#" class="grey-text lighten-1">{{ post.author }}</a></span>
+        <span class="post-views grey-text lighten-1 right">{{ post.views }}</span>
+      </div>
+    </header>
+    <div class="entry-content clearfix">
+      {{ post.body|safe }}
+    </div>
+    <footer>
+      <span class="post-category"><a href="#">{{ post.category.name }}</a></span>
+    </footer>
+  </article>
+</div>
+
+{% endblock main %}
+
+<!-- {% block footer %}
+{% endblock footer %} -->

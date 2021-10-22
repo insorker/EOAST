@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>∫EOAST∫</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}"  media="screen,projection"/>
+  <link type="text/css" rel="stylesheet" href="{% static 'css/base.css' %}"  media="screen,projection"/>
+  <!-- Markdown -->
+  <link href="https://cdn.bootcss.com/highlight.js/9.15.8/styles/github.min.css" rel="stylesheet">
+  <style>
+    .codehilite {
+      padding: 0;
+    }
+
+    /* for block of numbers */
+    .hljs-ln-numbers {
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+
+      text-align: center;
+      color: #ccc;
+      border-right: 1px solid #CCC;
+      vertical-align: top;
+      padding-right: 5px;
+    }
+
+    .hljs-ln-n {
+      width: 30px;
+    }
+
+    /* for block of code */
+    .hljs-ln .hljs-ln-code {
+      padding-left: 10px;
+      white-space: pre;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav class="white">
+      <div class="nav-wrapper container">
+        <a href="{% url 'blog:index' %}" class="brand-logo"><span class="blue-text darken-4">EOAST</span></a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="https://mp.weixin.qq.com/s/nITBvcYG2hZFlaWASTq3mA"><span class="blue-text darken-4" target="_self">部门介绍</span></a></li>
+          <li><a href="#"><span class="blue-text darken-4" target="_self">招新报名</span></a></li>
+          <li><a href="{% url 'blog:gallery' %}" target="_self"><span class="blue-text darken-4">文章</span></a></li>
+          <li><a href="#"><span class="blue-text darken-4" target="_self">资源</span></a></li>
+          <li><a href="{% url 'blog:notice_page' %}"><span class="blue-text darken-4" target="_self">公告</span></a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    {% block main %}
+    {% endblock main %}
+  </main>
+
+  <!-- <footer>
+    {% block footer %}
+    {% endblock footer %}
+  </footer> -->
+  <footer class="page-footer teal">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">关于EOAST</h5>
+          <p class="grey-text text-lighten-4">电子与光学工程学院科学技术协会（EOST）是一个以学术研究和科技创新为宗旨的社团，在学院党委和团委以及历届成员的共同努力下，科协人踏实工作，不懈努力，群策群力，同心同德，使校园科技工作一年一个台阶，稳步前进，并取得了一系列显著成果。</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        © 2021 Copyright
+        <a class="brown-text text-lighten-3 right" href="https://github.com/insorker">制作：insorker</a>
+      </div>
+    </div>
+  </footer>
+
+  <!--  Scripts-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/init.js' %}"></script>
+  <!-- Markdown -->
+  <script src="https://cdn.bootcss.com/highlight.js/9.15.8/highlight.min.js"></script>
+  <script src="https://cdn.bootcss.com/highlightjs-line-numbers.js/2.7.0/highlightjs-line-numbers.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+  </script>
+</body>
+</html>
