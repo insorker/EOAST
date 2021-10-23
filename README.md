@@ -19,6 +19,9 @@
   - [迁移数据库](#迁移数据库)
   - [运行项目](#运行项目)
 - [开发说明](#开发说明)
+  - [项目结构](项目结构)
+  - [前端模板](#前端模板)
+  - [后端](#后端)
 - [官网](#官网)
 - [维护者](#维护者)
 - [如何贡献](#如何贡献)
@@ -36,6 +39,13 @@
 
 请确保你本地的Python版本大于Python 3.8.8，并通过以下命令安装依赖
 
+> 建议先创建好python虚拟环境，在虚拟环境中安装相关依赖
+>
+> ```sh
+> $ python -m venv ./venv
+> $ source ./venv/bin/activate
+> ```
+
 ```sh
 $ pip install -r requirements.txt
 ```
@@ -44,7 +54,7 @@ materializecss的相关组件可以在官网下载，具体使用参考[base.htm
 
 ### 修改SECRET_KEY
 
-你可以选择已有项目，或新建一个Django项目，复制其**SECRET_KEY**至本项目**EOAST_Project/settings.py**文件中**SECRET_KEY**位置
+你可以选择已有项目，或新建一个Django项目，复制其**SECRET_KEY**至本项目**EOAST_Project/settings.sample.py**文件中**SECRET_KEY**位置，并将**settings.sample.py**文件重命名为**settings.py**
 
 ### 迁移数据库
 
@@ -67,7 +77,55 @@ $ python manage.py runserver
 
 ## 开发说明
 
-这只是开发项目，实际部署至网站的工作请另外修改文件并部署。
+> 这只是开发项目，实际部署至网站的工作请另外修改文件并部署。
+
+### 项目结构
+
+```sh
+.
+├── EOAST_Project
+│   ├── EOAST_Project
+│   │   ├── EOAST_Project.ini
+│   │   ├── __init__.py
+│   │   ├── asgi.py
+│   │   ├── settings.py
+│   │   ├── settings.sample.py
+│   │   ├── urls.py
+│   │   └── wsgi.py
+│   ├── blog
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── migrations
+│   │   ├── models.py
+│   │   ├── static
+│   │   ├── templates
+│   │   ├── tests.py
+│   │   ├── urls.py
+│   │   └── views.py
+│   ├── manage.py
+│   └── media
+│       └── article
+├── README.md
+└── requirements.txt
+```
+
+[EOAST_Project/EOAST_Project](https://github.com/insorker/EOAST/tree/master/EOAST_Project/EOAST_Project)目录由startproject创建
+
+[EOAST_Project/blog](https://github.com/insorker/EOAST/tree/master/EOAST_Project/blog)目录由startapp创建
+
+### 前端模板
+
+- 所有**html**模板文件均放置于对应应用目录下templates文件夹中
+
+- **css/js**文件均放置于对应应用目录下static文件夹中
+
+- 用户上传的图片存放于static/media文件夹中，通过Post类生成变量的picture属性调用
+- 如果上传网页相关图片（固定不需要被修改），请将图片放置在static/img文件夹下，并通过{% load static %} {% static 'img/...' %}调用
+
+### 后端
+
+后端实现均基于Django，目前主要开发blog应用中。
 
 ## 官网
 
@@ -75,11 +133,11 @@ http://47.110.126.229/
 
 ## 维护者
 
-[@insorker](https://github.com/insorker)。
+[@insorker](https://github.com/insorker)
 
 ## 如何贡献
 
-非常欢迎你的加入！[提一个 Issue](https://github.com/RichardLitt/standard-readme/issues/new) 或者提交一个 Pull Request。
+非常欢迎你的加入！[提一个 Issue](https://github.com/insorker/EOAST/issues/new) 或者提交一个[Pull Request](https://github.com/insorker/EOAST/pulls)。
 
 ### 贡献者
 
